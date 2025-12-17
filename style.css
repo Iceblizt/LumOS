@@ -1,0 +1,389 @@
+/* --- Setup Variabel --- */
+:root {
+    --bg-body: #fdfbf7;
+    --bg-card: #ffffff;
+    --text-main: #4a403a;
+    --text-muted: #8c7b70;
+    --accent: #b08d74;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- SETUP SCROLL SNAP --- */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- LOGO FIXED --- */
+.fixed-logo-container {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+.fixed-logo {
+    height: 100px;
+    width: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.fixed-logo:hover {
+    transform: scale(1.1);
+}
+
+/* --- ANIMASI ENGINE --- */
+.anim-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+section.is-visible .anim-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.3s;
+}
+
+.delay-3 {
+    transition-delay: 0.5s;
+}
+
+.delay-4 {
+    transition-delay: 0.7s;
+}
+
+.delay-5 {
+    transition-delay: 0.9s;
+}
+
+
+/* --- DESIGN ELEMENTS --- */
+
+/* Slide 1: Hero */
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+}
+
+h1.main-title {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -2px;
+}
+
+.slogan {
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    max-height: 35vh;
+    width: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(74, 64, 58, 0.15);
+    margin-bottom: 2rem;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    animation: bounce 2s infinite;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* General Section Styles */
+.features-wrapper,
+.videos-wrapper,
+.specs-wrapper {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Grid System */
+.wiz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* Grid 3 Kolom untuk Foto */
+.wiz-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* Features Card */
+.wiz-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wiz-card:nth-child(5) {
+    grid-column: 1 / -1;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.wiz-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.wiz-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.wiz-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+}
+
+.wiz-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Video & Photo Cards */
+.video-card,
+.photo-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.video-frame {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    border: none;
+    background: #eee;
+}
+
+/* Gaya untuk Foto dan Caption */
+.photo-frame {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.photo-caption {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* --- STYLE KHUSUS GAMBAR 'What is LumOS' --- */
+.concept-image {
+    width: 100%;
+    height: 300px;
+    /* Tinggi dibatasi agar jadi persegi panjang */
+    object-fit: cover;
+    /* Gambar akan dicrop otomatis agar pas (tidak gepeng) */
+    object-position: center;
+    /* Fokus crop di tengah */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* Specs & Footer */
+.specs-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-cta {
+    display: inline-block;
+    margin-top: 2rem;
+    background: var(--text-main);
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-cta:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* --- RESPONSIVE HP --- */
+@media (max-width: 768px) {
+
+    html,
+    body {
+        overflow: auto;
+        height: auto;
+    }
+
+    .scroll-container {
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+    }
+
+    section {
+        height: auto;
+        min-height: 90vh;
+        padding: 4rem 1.5rem;
+        opacity: 1 !important;
+    }
+
+    .anim-item {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    h1.main-title {
+        font-size: 3.5rem;
+    }
+
+    .wiz-grid,
+    .wiz-grid-3,
+    .videos-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .wiz-card:nth-child(5) {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .photo-frame {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .fixed-logo {
+        height: 40px;
+        top: 20px;
+        right: 20px;
+    }
+
+    /* Responsive untuk gambar konsep */
+    .concept-image {
+        height: 200px;
+    }
+}
