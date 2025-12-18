@@ -330,11 +330,16 @@ h1.main-title {
 }
 
 /* --- RESPONSIVE HP --- */
+/* --- RESPONSIVE HP (Mobile Fix) --- */
 @media (max-width: 768px) {
 
+    /* 1. Matikan Scroll Snap & Reset Tinggi */
     html,
     body {
-        overflow: auto;
+        overflow-x: hidden;
+        /* Cegah geser samping */
+        overflow-y: auto;
+        /* Scroll biasa */
         height: auto;
     }
 
@@ -344,46 +349,96 @@ h1.main-title {
         scroll-snap-type: none;
     }
 
+    /* 2. Perbaiki Section agar tidak maksa ke tengah */
     section {
         height: auto;
-        min-height: 90vh;
-        padding: 4rem 1.5rem;
+        /* Tinggi mengikuti isi konten */
+        min-height: 100vh;
+        /* Minimal setinggi layar */
+        padding: 6rem 1.5rem 4rem 1.5rem;
+        /* Tambah jarak atas (biar gk nabrak logo) */
         opacity: 1 !important;
+
+        /* Ubah Flexbox agar konten panjang bisa discroll */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Konten mulai dari atas, bukan tengah */
     }
 
+    /* 3. Matikan Animasi Scroll di HP (Biar ringan & gk ngebug) */
     .anim-item {
         opacity: 1 !important;
         transform: none !important;
+        transition: none !important;
     }
 
+    /* 4. Kecilkan Font Judul */
     h1.main-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        /* Lebih kecil biar muat */
+        margin-top: 2rem;
     }
 
+    .section-title {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+
+    .slogan {
+        font-size: 1.2rem;
+    }
+
+    /* 5. Atur Grid jadi 1 Kolom */
+    .features-wrapper,
+    .videos-wrapper,
+    .specs-wrapper,
     .wiz-grid,
-    .wiz-grid-3,
-    .videos-wrapper {
+    .wiz-grid-3 {
         grid-template-columns: 1fr;
+        /* Paksa 1 kolom ke bawah */
+        gap: 1.5rem;
+        max-width: 100%;
     }
 
+    /* 6. Perbaiki Kartu Fitur & Foto */
     .wiz-card:nth-child(5) {
         grid-column: auto;
+        /* Reset posisi item ke-5 */
         width: 100%;
     }
 
     .photo-frame {
         height: auto;
-        max-height: 300px;
+        /* Tinggi fleksibel */
+        max-height: 250px;
+        /* Batasi biar gk kepanjangan */
+        object-fit: cover;
     }
 
+    /* 7. Perbaiki Gambar Hero & Konsep */
+    .hero-image {
+        max-height: 250px;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .concept-image {
+        height: 200px;
+        /* Perkecil gambar konsep di HP */
+    }
+
+    /* 8. Logo Fixed diperkecil */
     .fixed-logo {
-        height: 40px;
+        height: 50px;
+        /* Jangan terlalu besar di HP */
         top: 20px;
         right: 20px;
     }
 
-    /* Responsive untuk gambar konsep */
-    .concept-image {
-        height: 200px;
+    /* 9. Video agar tidak gepeng */
+    .video-frame {
+        height: auto;
+        aspect-ratio: 16/9;
     }
 }
